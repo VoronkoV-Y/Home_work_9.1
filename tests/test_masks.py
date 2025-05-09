@@ -1,6 +1,7 @@
 import pytest
 
-from src.masks import get_mask_card_number
+from src.masks import get_mask_card_number, get_mask_account
+
 
 # Проверка стандартной работы функции test_get_mask_card_number, используя фикстуру
 def test_get_mask_card_number(card_number_fixture):
@@ -29,4 +30,24 @@ def test_get_mask_card_number_empty():
     assert str(exc_info.value) == "Отсутствует номер карты"
 
 
+### Далее тестируем функцию get_mask_account
 
+# Проверка стандартной работы функции get_mask_account, используя фикстуру
+def test_get_mask_account(account_fixture):
+    assert get_mask_account(account_fixture) == "**9589"
+
+
+# Проверка работы функции с различными форматами и длинами номеров счетов
+@pytest.mark.parametrize("account_number, expected", [("35383033474447895560", "**5560"),
+                                                   (73654108430135874305, "**4305"),
+                                                   ("736541084301358743051234", "**1234")])
+def test_get_get_mask_account_non_standart_arg(account_number, expected):
+    assert get_mask_account(account_number) == expected
+
+
+# Проверка, что функция корректно обрабатывает входные данные, где номер счета меньше ожидаемой длины
+def test_get_mask_account_too_short_length():
+    with pytest.raises(Exception) as exc_info:
+        get_mask_account("7365")
+
+    assert str(exc_info.value) == "Ошибка! Длина номера счёта не соответствует ожиданиям."

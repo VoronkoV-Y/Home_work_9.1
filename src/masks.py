@@ -24,5 +24,11 @@ def get_mask_card_number(card_number: str) -> str:
 
 def get_mask_account(account_number: str) -> str:
     """Функция маскирует номер банковского счета и отображает его в формате **XXXX"""
+    if len(str(account_number)) < 20:
+        raise Exception("Ошибка! Длина номера счёта не соответствует ожиданиям.")
+
+    if type(account_number) is not str: # преобразуем в строку в случае передачи номера счёта числовым форматом
+        account_number = str(account_number)
+
     mask_account = "**" + account_number[-4:]
     return mask_account
