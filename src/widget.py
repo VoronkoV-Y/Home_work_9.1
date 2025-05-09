@@ -19,6 +19,12 @@ def mask_account_card(info_card: str) -> str:
 
 def get_date(date_data: str) -> str:
     """Функция преобразует время в формат ДД.ММ.ГГГГ"""
+    if not type(date_data) is str:
+        raise Exception("Ошибка! Неверный входной формат даты.")
+
+    if not len(str(date_data)):
+        raise Exception("Ошибка! Дата отсутствует")
+
     date_without_time = date_data.split("T")  # разделяем строку на дату и время
     date_list = date_without_time[0].split("-")
     new_date_data = ".".join(date_list[::-1])
