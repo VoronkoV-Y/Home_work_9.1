@@ -1,12 +1,17 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
-@pytest.mark.parametrize("info_card_or_account, expected", [("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
-                                                            ("Счет 64686473678894779589", "Счет **9589"),
-                                                            ("MasterCard 7158300734726758","MasterCard 7158 30** **** 6758"),
-                                                            ("Счет 35383033474447895560", "Счет **5560")])
+@pytest.mark.parametrize(
+    "info_card_or_account, expected",
+    [
+        ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
+        ("Счет 64686473678894779589", "Счет **9589"),
+        ("MasterCard 7158300734726758", "MasterCard 7158 30** **** 6758"),
+        ("Счет 35383033474447895560", "Счет **5560"),
+    ],
+)
 def test_mask_account_card_parametrize(info_card_or_account, expected):
     assert mask_account_card(info_card_or_account) == expected
 
@@ -19,10 +24,11 @@ def test_mask_account_card_incorrect_data():
     assert str(exc_info.value) == "Ошибка! Некорректные входные данные"
 
 
-## Далее тестируем функцию get_date
+# Далее тестируем функцию get_date
 
 def test_get_date(date_fixture):
     assert get_date(date_fixture) == "11.03.2024"
+
 
 # Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата
 def test_get_date_no_date():
