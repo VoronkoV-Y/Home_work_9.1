@@ -9,5 +9,9 @@ def filter_by_state(user_info_list: list[dict], state: str = "EXECUTED") -> list
 
 def sort_by_date(user_info_list: list[dict], reverse_param: bool = True) -> list[dict]:
     """Функция сортирует данные пользователей по дате"""
+    for dict_info in user_info_list:
+        if not type(dict_info["date"]) is str:
+            raise Exception("Ошибка! Некорректный формат даты")
+
     sorted_user_info_list = sorted(user_info_list, key=lambda x: x["date"], reverse=reverse_param)
     return sorted_user_info_list
