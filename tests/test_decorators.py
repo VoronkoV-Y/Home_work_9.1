@@ -1,8 +1,10 @@
-import pytest
-from src.decorators import log
-import tempfile
 import os
+import tempfile
 import time
+
+import pytest
+
+from src.decorators import log
 
 
 def test_log(capsys):
@@ -31,7 +33,6 @@ def test_log_with_filename():
         def my_function(x, y):
             return x + y
 
-
         my_function(10, 15)
         with open(temp_file_name, 'r') as f:
             content = f.read()
@@ -48,7 +49,6 @@ def test_log_with_filename_error():
         @log(filename=temp_file_name)
         def my_error_function(x, y):
             return x / y
-
 
         my_error_function(10, 0)
         with open(temp_file_name, 'r') as f:

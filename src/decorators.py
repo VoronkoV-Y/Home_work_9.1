@@ -28,17 +28,3 @@ def log(filename: str = None) -> Callable:
                     print(text_log)
         return wrapper
     return decorator
-
-
-# @log(filename="mylog.txt")
-# @log()
-# def my_function(x, y):
-#     return x + y
-#
-# my_function(15, 10)
-
-@log()
-def faulty_function(x, y):
-    return x / y
-
-faulty_function(1, 0)
