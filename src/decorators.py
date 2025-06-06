@@ -18,13 +18,15 @@ def log(filename: str = None) -> Callable:
                         file.write(text_log)
                 else:
                     print(text_log)
-                return result
+
             except Exception as e:
+                result = None
                 text_log = f'{name} error: {type(e).__name__}. Inputs: {args}, {kwargs}'
                 if filename:
                     with open(filename, 'a') as file:
                         file.write(text_log)
                 else:
                     print(text_log)
+            return result
         return wrapper
     return decorator
