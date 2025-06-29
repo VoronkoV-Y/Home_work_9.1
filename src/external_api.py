@@ -22,11 +22,12 @@ def exchange_fnc(rate: str) -> float:
     response = requests.get(url, headers=headers, params=payload)
 
     status_code = response.status_code
-    result = response.json()
+    result_ = response.json()
+    return result_['result']
 
-    print(status_code)
-    print(result)
+    # print(status_code)
+    # print(result)
 
 
 if __name__ == "__main__":
-    exchange_fnc("USD")
+    print(exchange_fnc("USD"))
