@@ -26,6 +26,7 @@ def test_mask_account_card_incorrect_data():
 
 # Далее тестируем функцию get_date
 
+
 def test_get_date(date_fixture):
     assert get_date(date_fixture) == "11.03.2024"
 
