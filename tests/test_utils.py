@@ -37,12 +37,12 @@ def test_transaction_amount_RUB(RUB_transaction_amount_fixture):
 
 @patch("requests.get")
 def test_transaction_amount_USD(mock_get):
-    mock_get.return_value.json.return_value = {"result": 110}
+    mock_get.return_value.json.return_value = {"result": 500}
     transaction = {
         "id": 142264268,
         "state": "EXECUTED",
         "date": "2019-04-04T23:20:05.206878",
-        "operationAmount": {"amount": "500", "currency": {"name": "USD", "code": "USD"}},
+        "operationAmount": {"amount": "50", "currency": {"name": "USD", "code": "USD"}},
         "description": "Перевод со счета на счет",
         "from": "Счет 19708645243227258542",
         "to": "Счет 75651667383060284188",
@@ -50,10 +50,10 @@ def test_transaction_amount_USD(mock_get):
 
     load_dotenv()
     API_KEY = os.getenv("API_KEY_apilayer")
-    payload = {"amount": "1", "from": "USD", "to": "RUB"}
+    payload = {"amount": "50", "from": "USD", "to": "RUB"}
     headers = {"apikey": API_KEY}
 
-    assert transaction_amount(transaction) == 55000.00
+    assert transaction_amount(transaction) == 500
     mock_get.assert_called_once_with(
         "https://api.apilayer.com/exchangerates_data/convert", headers=headers, params=payload
     )
