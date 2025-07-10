@@ -10,7 +10,7 @@ API_KEY = os.getenv("API_KEY_apilayer")
 
 def exchange_fnc(transaction: dict) -> float:
     """Функция конвертации валюты в рубли"""
-    if type(transaction) == dict:
+    if type(transaction) is dict:
         payload = {
             "amount": transaction["operationAmount"]["amount"],
             "from": transaction["operationAmount"]["currency"]["code"],
@@ -20,7 +20,6 @@ def exchange_fnc(transaction: dict) -> float:
 
         response = requests.get(url, headers=headers, params=payload)
 
-        status_code = response.status_code
         result_ = response.json()
         result_amount_RUB = result_['result']
         return float(result_amount_RUB)

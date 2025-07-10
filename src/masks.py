@@ -1,5 +1,6 @@
 from loggers import logger_masks
 
+
 def get_mask_card_number(card_number: str) -> str:
     """Функция маскирует номер банковской карты - номер карты отображается в формате XXXX XX** **** XXXX"""
     logger_masks.info("Запуск функции маскировки банковской карты get_mask_card_number")

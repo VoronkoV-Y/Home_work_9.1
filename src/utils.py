@@ -1,5 +1,5 @@
 import json
-import os
+
 from loggers import logger_utils
 from src.external_api import exchange_fnc
 
