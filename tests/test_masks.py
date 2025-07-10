@@ -41,6 +41,7 @@ def test_get_mask_card_number_empty():
 
 # Далее тестируем функцию get_mask_account
 
+
 # Проверка стандартной работы функции get_mask_account, используя фикстуру
 def test_get_mask_account(account_fixture):
     assert get_mask_account(account_fixture) == "**9589"

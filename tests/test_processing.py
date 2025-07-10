@@ -46,6 +46,7 @@ def test_filter_by_state_parametrize(state, excpected):
 
 # Далее тестируем функцию sort_by_date
 
+
 def test_sort_by_date(state_fixture):
     assert sort_by_date(state_fixture) == [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
