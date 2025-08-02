@@ -1,6 +1,6 @@
 import json
 
-from loggers import logger_utils
+from src.loggers import logger_utils
 from src.external_api import exchange_fnc
 
 
@@ -37,3 +37,5 @@ def transaction_amount(transaction: dict) -> float:
         exchange_ = exchange_fnc(transaction)
         logger_utils.info("Заверщение работы функции transaction_amount.\n")
         return exchange_
+
+transactions_info("")

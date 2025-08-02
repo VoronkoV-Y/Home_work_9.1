@@ -8,11 +8,6 @@ from dotenv import load_dotenv
 from src.external_api import exchange_fnc
 from src.utils import transaction_amount, transactions_info
 
-# @patch('builtins.open', new_callable=mock_open, read_data='[]')
-# def test_transactions_info(mock_open):
-#     mocked_data = json.load(mock_open)
-#     assert transactions_info() == []
-
 
 def test_transactions_info():
     with patch("builtins.open", new_callable=mock_open, read_data='[{"id": 1}]'):
