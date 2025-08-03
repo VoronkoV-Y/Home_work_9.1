@@ -1,7 +1,7 @@
 import json
 
-from src.loggers import logger_utils
 from src.external_api import exchange_fnc
+from src.loggers import logger_utils
 
 
 def transactions_info(path_: str) -> list[dict]:
