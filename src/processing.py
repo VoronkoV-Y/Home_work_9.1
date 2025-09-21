@@ -2,8 +2,11 @@ def filter_by_state(user_info_list: list[dict], state: str = "EXECUTED") -> list
     """Функция фильтрует список словарей по ключу \'state\'"""
     filtered_user_info = []
     for user_info in user_info_list:
-        if user_info["state"] == state:
-            filtered_user_info.append(user_info)
+        try:
+            if user_info["state"] == state:
+                filtered_user_info.append(user_info)
+        except KeyError:
+            continue
     return filtered_user_info
 
 
