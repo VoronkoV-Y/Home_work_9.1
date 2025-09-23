@@ -22,4 +22,5 @@ def exchange_fnc(transaction: dict) -> float:
 
         result_ = response.json()
         result_amount_RUB = result_['result']
-        return float(result_amount_RUB)
+
+    return float(result_amount_RUB)
