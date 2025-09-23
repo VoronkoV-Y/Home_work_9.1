@@ -1,10 +1,13 @@
+import csv
+# from csv import DictReader
+
 import pandas as pd
 
 
 def csv_reader_fnc(path_csv: str) -> list[dict]:
     """Функция для считывания финансовых операций из CSV - выдает список словарей с транзакциями"""
     try:
-        data = pd.read_csv(path_csv).to_dict(orient="records")
+        data = pd.read_csv(path_csv, delimiter=';').to_dict(orient="records")
         return data
     except FileNotFoundError:
         return f"Ошибка! Файл {path_csv} не найден!"
